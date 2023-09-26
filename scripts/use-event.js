@@ -1,4 +1,4 @@
-import { MEnterBoxEvent, MOutBoxEvent, ClkBoxEvent } from "./events.js";
+import { MEnterBoxEvent, MOutBoxEvent, ClkBoxEvent, ResetGame } from "./events.js";
 
 // the following function will add the required events to the gameBoxes:
 
@@ -14,4 +14,8 @@ const GameBoxesEvtAdder = (gameBoxes, getTurnOf, SetTurnOf, root) => {
     })
 }
 
-export { GameBoxesEvtAdder }
+const resetBtnEvtAdder = (resetBtn, SetTurnOf, gameBoxes) => {
+    resetBtn.addEventListener('click', e => ResetGame(e, SetTurnOf, gameBoxes))
+}
+
+export { GameBoxesEvtAdder, resetBtnEvtAdder }

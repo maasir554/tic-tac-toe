@@ -48,11 +48,37 @@ const ClkBoxEvent = (event, getTurnOf, setTurnOf, root) => {
 
         getTurnOf() === 'X' ? setTurnOf('O') : setTurnOf('X');
         
-        box.addEventListener('mouseenter', evt => MEnterBoxEvent(evt, getTurnOf))
-        box.addEventListener('mouseout', evt => MOutBoxEvent(evt, getTurnOf))
+        box.removeEventListener('mouseenter', evt => MEnterBoxEvent(evt, getTurnOf))
+        box.removeEventListener('mouseout', evt => MOutBoxEvent(evt, getTurnOf))
 
     }
 }
 
+// Function for resetting the game:
+const ResetGame =  (event, setTurnOf, gameBoxes) => {
+    setTurnOf('X');
 
-export {MEnterBoxEvent, MOutBoxEvent, ClkBoxEvent}
+    gameBoxes.forEach((box) => {
+        
+        setFillData(box, false);
+        
+        box.dataset.content = '';
+
+        box.style.animation = 'fade-out 0.5s ease-out 1'
+
+        setTimeout(() => {
+            box.innerText = '';
+            box.classList = ['play-box']
+        }, 250);
+
+        setTimeout(() => { box.style.animation = 'none' }, 500);
+
+
+        box.style.cursor = 'pointer'
+
+        
+    });
+
+}
+
+export {MEnterBoxEvent, MOutBoxEvent, ClkBoxEvent, ResetGame}

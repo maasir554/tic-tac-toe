@@ -192,3 +192,22 @@ main{
     border: none;
     transition: border 0.05s;
 }
+
+@keyframes fade-out {
+    0%{
+        opacity: 0.75;
+        box-shadow: none;
+    }
+    40%{
+        opacity: 0.1;
+        box-shadow: 0 0 50px 2.5px var(--active-shadow-color);
+    }
+    60%{
+        opacity: 0.1;
+        box-shadow: 0 0 50px 2.5px var(--active-shadow-color);
+    }
+    100%{
+        opacity: 1;
+        box-shadow: 0 0 0 0 transparent;
+    }
+}

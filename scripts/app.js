@@ -1,4 +1,4 @@
-import { GameBoxesEvtAdder } from "./use-event.js";
+import { GameBoxesEvtAdder, resetBtnEvtAdder } from "./use-event.js";
 
 const root = document.documentElement
 
@@ -18,4 +18,8 @@ let gameBoxes = document.querySelectorAll('.play-box');
 
 let sticks = document.querySelectorAll('.stick');
 
+let resetBtn = document.querySelector('#reset-game')
+
 GameBoxesEvtAdder(gameBoxes, getTurnOf, SetTurnOf, root);
+
+resetBtnEvtAdder(resetBtn, SetTurnOf, gameBoxes);
