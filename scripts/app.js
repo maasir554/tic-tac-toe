@@ -20,6 +20,8 @@ let sticks = document.querySelectorAll('.stick');
 
 let resetBtn = document.querySelector('#reset-game')
 
+
+
 GameBoxesEvtAdder(gameBoxes, getTurnOf, SetTurnOf, root);
 
-resetBtnEvtAdder(resetBtn, SetTurnOf, gameBoxes);
+resetBtnEvtAdder(resetBtn, SetTurnOf, gameBoxes, root, getTurnOf);

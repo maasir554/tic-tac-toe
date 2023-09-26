@@ -51,11 +51,17 @@ const ClkBoxEvent = (event, getTurnOf, setTurnOf, root) => {
         box.removeEventListener('mouseenter', evt => MEnterBoxEvent(evt, getTurnOf))
         box.removeEventListener('mouseout', evt => MOutBoxEvent(evt, getTurnOf))
 
+        // for indicator functionality: 
+
+        let indicatorBox = (box.parentElement.parentElement).children[0];
+
+        indicatorMover(indicatorBox, getTurnOf, root)
+
     }
 }
 
 // Function for resetting the game:
-const ResetGame =  (event, setTurnOf, gameBoxes) => {
+const ResetGame =  (event, setTurnOf, gameBoxes, root, getTurnOf) => {
     setTurnOf('X');
 
     gameBoxes.forEach((box) => {
@@ -76,9 +82,25 @@ const ResetGame =  (event, setTurnOf, gameBoxes) => {
 
         box.style.cursor = 'pointer'
 
+        let indicatorBox = (box.parentElement.parentElement).children[0];
+        
+        indicatorMover(indicatorBox, getTurnOf, root)
+
         
     });
 
+}
+
+const indicatorMover = (indicatorBox, getTurnOf, root) => {
+    let slider = indicatorBox.children[0].children[2];
+
+   if( getTurnOf() === 'X') {
+        root.style.setProperty('--active-bg-color', 'rgb(97, 134, 222)')
+        slider.style.left = '0'}
+    else {
+        root.style.setProperty('--active-bg-color', 'rgb(239, 106, 106)')
+        slider.style.left = '100px';
+    }
 }
 
 export {MEnterBoxEvent, MOutBoxEvent, ClkBoxEvent, ResetGame}
