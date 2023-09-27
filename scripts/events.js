@@ -1,4 +1,5 @@
 import { getFillData, getIdxData, setFillData, showStick, reqBoxClass, updateShadowColor } from "./utils.js";
+import { WinCheck } from "./logics.js";
 
 // for each box, hover event: 
 const MEnterBoxEvent = (event,getTurnOf) => {
@@ -30,7 +31,7 @@ const MOutBoxEvent = (event,getTurnOf) => {
 
 // Click handeler for gameBox:
 
-const ClkBoxEvent = (event, getTurnOf, setTurnOf, root) => {
+const ClkBoxEvent = (event, getTurnOf, setTurnOf, root, gameBoxes) => {
     let box = event.target;
 
     if (!getFillData(box)) {
@@ -41,6 +42,8 @@ const ClkBoxEvent = (event, getTurnOf, setTurnOf, root) => {
         box.style.opacity = '1';
 
         box.style.animation = 'st-anim 0.5s ease-out 1'
+
+        box.innerText = getTurnOf(); // bug fixed
 
         updateShadowColor(root, getTurnOf() )
 
@@ -57,11 +60,15 @@ const ClkBoxEvent = (event, getTurnOf, setTurnOf, root) => {
 
         indicatorMover(indicatorBox, getTurnOf, root)
 
+        // for checking if someone has won:
+
+        WinCheck(gameBoxes)
+
     }
 }
 
 // Function for resetting the game:
-const ResetGame =  (event, setTurnOf, gameBoxes, root, getTurnOf) => {
+const ResetGame =  (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE) => {
     setTurnOf('X');
 
     gameBoxes.forEach((box) => {
@@ -72,9 +79,12 @@ const ResetGame =  (event, setTurnOf, gameBoxes, root, getTurnOf) => {
 
         box.style.animation = 'fade-out 0.5s ease-out 1'
 
+        box.removeEventListener('click',bundeledCBE);
+
         setTimeout(() => {
             box.innerText = '';
             box.classList = ['play-box']
+            box.addEventListener('click',bundeledCBE); // bug fix
         }, 250);
 
         setTimeout(() => { box.style.animation = 'none' }, 500);
