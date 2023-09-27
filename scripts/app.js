@@ -12,16 +12,14 @@ const getTurnOf = () => {
     return turnOf;
 }
 
-let finished = false;
-
 let gameBoxes = document.querySelectorAll('.play-box');
 
 let sticks = document.querySelectorAll('.stick');
 
 let resetBtn = document.querySelector('#reset-game')
 
+let indicator = document.querySelector('#indicator')
 
-
-GameBoxesEvtAdder(gameBoxes, getTurnOf, SetTurnOf, root);
+GameBoxesEvtAdder(gameBoxes, getTurnOf, SetTurnOf, root, indicator);
 
 resetBtnEvtAdder(resetBtn, SetTurnOf, gameBoxes, root, getTurnOf, sticks);

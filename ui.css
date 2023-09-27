@@ -217,7 +217,7 @@ main{
     align-items: center;
     justify-content: space-around;
     width: 55%;
-    /* background-color: red; */
+    height: 60px;
     font-size: 25px;
     font-weight: 700;
     color: rgb(66, 66, 66);
@@ -248,4 +248,16 @@ main{
     border-radius: 10px;
     transition: 0.25s ease-out;
     /* transition: background-color 0.25s ease-out; */
+}
+
+@keyframes disabling {
+    0%{
+        background-color: rgb(251, 251, 251);
+    }
+    50%{
+        background-color: rgb(245, 245, 245);
+    }
+    100%{
+        background-color: rgb(251, 251, 251);
+    }
 }

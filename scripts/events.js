@@ -33,7 +33,7 @@ const MOutBoxEvent = (event,getTurnOf) => {
 
 // Click handeler for gameBox:
 
-const ClkBoxEvent = (event, getTurnOf, setTurnOf, root, gameBoxes) => {
+const ClkBoxEvent = (event, getTurnOf, setTurnOf, root, gameBoxes, indicator) => {
     let box = event.target;
 
     if (!getFillData(box)) {
@@ -64,7 +64,7 @@ const ClkBoxEvent = (event, getTurnOf, setTurnOf, root, gameBoxes) => {
 
         // for checking if someone has won:
 
-        WinCheck(gameBoxes)
+        WinCheck(gameBoxes, getTurnOf, indicator)
 
     }
 }
@@ -82,10 +82,11 @@ const ResetGame = (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE, st
         box.style.animation = 'fade-out 0.5s ease-out 1'
 
         box.removeEventListener('click',bundeledCBE);
-        
+
         sticks.forEach( stick => stick.style.display = 'none' )
-        
-        
+    
+        box.style.backgroundColor = 'rgb(251, 251, 251)'
+
         setTimeout(() => {
             box.innerText = '';
             box.addEventListener('click',bundeledCBE); 
@@ -99,6 +100,14 @@ const ResetGame = (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE, st
         box.style.cursor = 'pointer'
 
         let indicatorBox = (box.parentElement.parentElement).children[0];
+
+        indicatorBox.innerHTML = 
+        `Turn of:  
+        <div id="actp-encloser">
+            <span class="active-player">X</span>
+            <span class="">O</span>
+            <div class="actp-slider"></div>
+        </div>`
         
         indicatorMover(indicatorBox, getTurnOf, root)
 

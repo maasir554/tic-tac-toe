@@ -2,17 +2,21 @@ import { MEnterBoxEvent, MOutBoxEvent, ClkBoxEvent, ResetGame } from "./events.j
 
 // the following function will add the required events to the gameBoxes:
 
-let bundeledCBE;
+let bundeledCBE; // bahar define isliye kya h kyuki dono functions mei use krna h.
 
-const GameBoxesEvtAdder = (gameBoxes, getTurnOf, SetTurnOf, root) => {
+const GameBoxesEvtAdder = (gameBoxes, getTurnOf, SetTurnOf, root, indicator) => {
     
-    bundeledCBE = evt => ClkBoxEvent(evt, getTurnOf, SetTurnOf, root, gameBoxes);
+    bundeledCBE = evt => ClkBoxEvent(evt, getTurnOf, SetTurnOf, root, gameBoxes, indicator);
     
+    let bundeledMEBE = evt => MEnterBoxEvent(evt, getTurnOf); // bundle isiliye kra taki baad mei removeEventListener ka use kr saken.
+
+    let bundeledMOBE =  evt => MOutBoxEvent(evt, getTurnOf);
+   
     gameBoxes.forEach(e => {
         
-        e.addEventListener('mouseenter', evt => MEnterBoxEvent(evt, getTurnOf));
+        e.addEventListener('mouseenter',bundeledMEBE);
 
-        e.addEventListener('mouseout', evt => MOutBoxEvent(evt, getTurnOf));
+        e.addEventListener('mouseout', bundeledMOBE);
 
         e.addEventListener('click',bundeledCBE);
 

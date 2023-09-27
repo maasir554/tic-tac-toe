@@ -1,4 +1,6 @@
-const WinCheck = (gameBoxes) => {
+import { finishGame } from "./utils.js";
+
+const WinCheck = (gameBoxes, getTurnOf, indicator) => {
  
     let content = (gameBox) => {
         if ( gameBox && gameBox.dataset.content) return gameBox.dataset.content;
@@ -21,6 +23,7 @@ const WinCheck = (gameBoxes) => {
             console.log((i+3)/3);
             lineToShow.style.display = 'block';
 
+            finishGame(gameBoxes,getTurnOf,indicator)
             return true;
         }
 
@@ -37,6 +40,8 @@ const WinCheck = (gameBoxes) => {
         {
             lineToShow = document.querySelector(`#st-vt${i+1}`)
             lineToShow.style.display = 'block';
+
+            finishGame(gameBoxes,getTurnOf,indicator)
             return true;
         }
     }
@@ -51,9 +56,11 @@ const WinCheck = (gameBoxes) => {
 
             content(gameBoxes[n]) == content(gameBoxes[ 8 - n] )
         ){
+            
             lineToShow = document.querySelector(`#st-d${(n+2)/2}`)
             lineToShow.style.display = 'block';
-            console.log("won!");
+
+            finishGame(gameBoxes,getTurnOf,indicator)
             return true
         }
     })
