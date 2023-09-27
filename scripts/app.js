@@ -24,4 +24,4 @@ let resetBtn = document.querySelector('#reset-game')
 
 GameBoxesEvtAdder(gameBoxes, getTurnOf, SetTurnOf, root);
 
-resetBtnEvtAdder(resetBtn, SetTurnOf, gameBoxes, root, getTurnOf);
+resetBtnEvtAdder(resetBtn, SetTurnOf, gameBoxes, root, getTurnOf, sticks);

@@ -19,8 +19,8 @@ const GameBoxesEvtAdder = (gameBoxes, getTurnOf, SetTurnOf, root) => {
     })
 }
 
-const resetBtnEvtAdder = (resetBtn, SetTurnOf, gameBoxes, root, getTurnOf) => {
-    resetBtn.addEventListener('click', e => ResetGame(e, SetTurnOf, gameBoxes, root, getTurnOf, bundeledCBE))
+const resetBtnEvtAdder = (resetBtn, SetTurnOf, gameBoxes, root, getTurnOf, sticks) => {
+    resetBtn.addEventListener('click', e => ResetGame(e, SetTurnOf, gameBoxes, root, getTurnOf, bundeledCBE, sticks))
 }
 
 export { GameBoxesEvtAdder, resetBtnEvtAdder }

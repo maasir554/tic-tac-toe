@@ -70,7 +70,7 @@ const ClkBoxEvent = (event, getTurnOf, setTurnOf, root, gameBoxes) => {
 }
 
 // Function for resetting the game:
-const ResetGame = (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE) => {
+const ResetGame = (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE, sticks) => {
     setTurnOf('X');
 
     gameBoxes.forEach( box => {
@@ -83,6 +83,7 @@ const ResetGame = (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE) =>
 
         box.removeEventListener('click',bundeledCBE);
         
+        sticks.forEach( stick => stick.style.display = 'none' )
         
         
         setTimeout(() => {

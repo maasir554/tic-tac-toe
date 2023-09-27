@@ -99,14 +99,14 @@ main{
     display: none;
 }
 
-#st-d1{
+#st-d2{
     top:-200px;
     left: 265px;
     height: 930px;
     transform: rotate(45deg);
 }
 
-#st-d2{
+#st-d1{
     top:-200px;
     left: 265px;
     height: 930px;
@@ -122,13 +122,13 @@ main{
 #st-hz2{
     transform: rotate(90deg);
     left:265px;
-    top: 175px
+    top: 0;
 }
 
 #st-hz3{
     transform: rotate(90deg);
     left:265px;
-    top: 0;
+    top: 175px
 }
 
 #st-vt1{

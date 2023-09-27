@@ -1,8 +1,11 @@
 const WinCheck = (gameBoxes) => {
+ 
     let content = (gameBox) => {
         if ( gameBox && gameBox.dataset.content) return gameBox.dataset.content;
         else return null;
     }
+    
+    let lineToShow;
     
     // horizontal:
     
@@ -14,8 +17,11 @@ const WinCheck = (gameBoxes) => {
             content(gameBoxes[i]) == content(gameBoxes[i+1]) && content(gameBoxes[i+1]) == content(gameBoxes[i+2])
         )
         {
-            console.log("Koi jeet gaya!");
-            break;
+            lineToShow = document.querySelector(`#st-hz${(i+3)/3}`)
+            console.log((i+3)/3);
+            lineToShow.style.display = 'block';
+
+            return true;
         }
 
     }
@@ -29,8 +35,9 @@ const WinCheck = (gameBoxes) => {
             content(gameBoxes[i]) == content(gameBoxes[i+3]) && content(gameBoxes[i+3]) == content(gameBoxes[i+6])
         )
         {
-            console.log("Koi jeet gaya!");
-            break;
+            lineToShow = document.querySelector(`#st-vt${i+1}`)
+            lineToShow.style.display = 'block';
+            return true;
         }
     }
 
@@ -44,15 +51,10 @@ const WinCheck = (gameBoxes) => {
 
             content(gameBoxes[n]) == content(gameBoxes[ 8 - n] )
         ){
-            console.log("diagonally jeeta Re!");
-            
-            console.log(n);
-            
-            console.log(content(gameBoxes[n]));
-            
-            console.log(content(gameBoxes[4]));
-            
-            console.log(content(gameBoxes[8-n]));
+            lineToShow = document.querySelector(`#st-d${(n+2)/2}`)
+            lineToShow.style.display = 'block';
+            console.log("won!");
+            return true
         }
     })
 }
