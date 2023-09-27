@@ -67,3 +67,7 @@ const WinCheck = (gameBoxes, getTurnOf, indicator) => {
 }
 
 export { WinCheck }
+
+// copyright (c) Mohammad Maasir 2023
+// SPDX identifier: MIT License
+// 28 Sep 2023 | 00:14
