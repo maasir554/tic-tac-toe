@@ -6,6 +6,8 @@ const MEnterBoxEvent = (event,getTurnOf) => {
     let box = event.target;
 
     if (!getFillData(box)){
+        box.classList = ['play-box'] // bug fix!
+        
         box.classList.add( reqBoxClass( getTurnOf() ) ); 
 
         box.style.opacity = '0.5'
@@ -68,10 +70,10 @@ const ClkBoxEvent = (event, getTurnOf, setTurnOf, root, gameBoxes) => {
 }
 
 // Function for resetting the game:
-const ResetGame =  (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE) => {
+const ResetGame = (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE) => {
     setTurnOf('X');
 
-    gameBoxes.forEach((box) => {
+    gameBoxes.forEach( box => {
         
         setFillData(box, false);
         
@@ -80,11 +82,14 @@ const ResetGame =  (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE) =
         box.style.animation = 'fade-out 0.5s ease-out 1'
 
         box.removeEventListener('click',bundeledCBE);
-
+        
+        
+        
         setTimeout(() => {
             box.innerText = '';
-            box.classList = ['play-box']
-            box.addEventListener('click',bundeledCBE); // bug fix
+            box.addEventListener('click',bundeledCBE); 
+            // box.classList = ['play-box'] // transferred upwards
+            
         }, 250);
 
         setTimeout(() => { box.style.animation = 'none' }, 500);
