@@ -1,4 +1,4 @@
-import { finishGame } from "./utils.js";
+import { finishGame, getFillData } from './utils.js'; 
 
 const WinCheck = (gameBoxes, getTurnOf, indicator) => {
  
@@ -48,7 +48,7 @@ const WinCheck = (gameBoxes, getTurnOf, indicator) => {
 
     // diagonals:
 
-    [0,2].forEach(n => {
+    for (let n of [0,2]) {  // forEach was causing trouble with `return`
         if ( 
             content(gameBoxes[n]) != null &&
 
@@ -63,7 +63,23 @@ const WinCheck = (gameBoxes, getTurnOf, indicator) => {
             finishGame(gameBoxes,getTurnOf,indicator)
             return true
         }
-    })
+    }
+
+    //Tie:
+
+    // the code interpreter will reach here here only if the above blocks return nothing(i.e., no one has one )
+    const itsTie = () => {
+        let totalBoxesFilled = 0;
+        
+        gameBoxes.forEach(box => getFillData(box) ? totalBoxesFilled++ : null);
+    
+        return totalBoxesFilled == 9 ? true : false;
+    }
+
+    if ( itsTie(gameBoxes) ) finishGame(gameBoxes,getTurnOf,indicator, itsTie());
+
+    return;
+
 }
 
 export { WinCheck }

@@ -26,17 +26,23 @@ const updateShadowColor = (root,turnOf) => {
     turnOf === 'X' ? root.style.setProperty('--active-shadow-color','blue') : root.style.setProperty('--active-shadow-color','red'); 
 }
 
-const finishGame = (gameBoxes, getTurnOf, indicator) => {
+const finishGame = (gameBoxes, getTurnOf, indicator, itsTie = false) => {
         gameBoxes.forEach(box => {
         box.style.animation = 'disabling 0.5s ease-in 1';
         box.dataset.filled = 'true';
         box.innerText=='' ? box.innerText = " " : {};
         box.style.cursor = 'default'
     });
-    indicator.innerHTML = `${getTurnOf() == 'X' ? 'O' : 'X'} is the winner!`
+    
+    if (itsTie){
+        indicator.innerHTML = `Its a Tie!`
+    }
+    else{
+        indicator.innerHTML = `${getTurnOf() == 'X' ? 'O' : 'X'} is the winner!`
+    }
+    
+    return;
+
 }
 
 export { getFillData, getIdxData, setFillData, showStick, reqBoxClass, updateShadowColor, finishGame }
-
-// for indicating turn:
-
