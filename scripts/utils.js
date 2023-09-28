@@ -27,7 +27,7 @@ const updateShadowColor = (root,turnOf) => {
 }
 
 const finishGame = (gameBoxes, getTurnOf, indicator, itsTie = false) => {
-        gameBoxes.forEach(box => {
+    gameBoxes.forEach(box => {
         box.style.animation = 'disabling 0.5s ease-in 1';
         box.dataset.filled = 'true';
         box.innerText=='' ? box.innerText = " " : {};
@@ -39,6 +39,15 @@ const finishGame = (gameBoxes, getTurnOf, indicator, itsTie = false) => {
     }
     else{
         indicator.innerHTML = `${getTurnOf() == 'X' ? 'O' : 'X'} is the winner!`
+        // just for styling:
+        document.documentElement.style.setProperty('--winner-color', getTurnOf() == 'X' ? ' rgb(239, 106, 106)' : 'rgb(97, 134, 222)' )
+        
+        document.querySelector('#indicator').style.animation = 'text-win 0.5s ease-in-out 1';
+
+        setTimeout( () => {
+            document.querySelector('#indicator').style.animation = 'none';
+            document.querySelector('#indicator').style.color = 'var(--winner-color)';
+        } , 450)
     }
     
     return;

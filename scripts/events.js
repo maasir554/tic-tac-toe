@@ -109,6 +109,8 @@ const ResetGame = (event, setTurnOf, gameBoxes, root, getTurnOf, bundeledCBE, st
             <div class="actp-slider"></div>
         </div>`
         
+        indicatorBox.style.color = 'rgb(66, 66, 66)';
+
         indicatorMover(indicatorBox, getTurnOf, root)
 
         

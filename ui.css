@@ -291,3 +291,17 @@ main{
         transform: scale(0.4);
     }
 }
+
+
+:root{
+    --winner-color: rgb(97, 134, 222); /* or rgb(239, 106, 106); */
+}
+
+@keyframes text-win {
+    0%{
+       
+    }
+    100%{
+        color: var(--winner-color);
+    }
+}

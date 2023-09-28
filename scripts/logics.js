@@ -78,7 +78,7 @@ const WinCheck = (gameBoxes, getTurnOf, indicator) => {
 
     if ( itsTie(gameBoxes) ) finishGame(gameBoxes,getTurnOf,indicator, itsTie());
 
-    return;
+    return false;
 
 }
 
