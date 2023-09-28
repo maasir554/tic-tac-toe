@@ -20,7 +20,6 @@ const WinCheck = (gameBoxes, getTurnOf, indicator) => {
         )
         {
             lineToShow = document.querySelector(`#st-hz${(i+3)/3}`)
-            console.log((i+3)/3);
             lineToShow.style.display = 'block';
 
             finishGame(gameBoxes,getTurnOf,indicator)

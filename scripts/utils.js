@@ -8,16 +8,6 @@ const setFillData = (elem, val) => {
     elem.dataset.filled = val
 }
 
-const getIdxData = (elem) => {
-
-    return parseInt(elem.dataset.idx)
-
-}
-
-const showStick = (elem) => {
-    elem.style.display = 'flex'
-}
-
 const reqBoxClass = (turnOf) => {
     return (turnOf === 'X') ? 'pb-x' : 'pb-o';
 }
@@ -29,9 +19,9 @@ const updateShadowColor = (root,turnOf) => {
 const finishGame = (gameBoxes, getTurnOf, indicator, itsTie = false) => {
     gameBoxes.forEach(box => {
         box.style.animation = 'disabling 0.5s ease-in 1';
-        box.dataset.filled = 'true';
-        box.innerText=='' ? box.innerText = " " : {};
+        !getFillData(box) ? box.innerText = " " : {};
         box.style.cursor = 'default'
+        box.dataset.filled = 'true';
     });
     
     if (itsTie){
@@ -54,4 +44,19 @@ const finishGame = (gameBoxes, getTurnOf, indicator, itsTie = false) => {
 
 }
 
-export { getFillData, getIdxData, setFillData, showStick, reqBoxClass, updateShadowColor, finishGame }
+const RandomMove = (gameBoxes) => {
+    let freeIndexes = [] ;
+    
+    for (let i = 0; i < 9; i++){
+        if ( !getFillData(gameBoxes[i])) freeIndexes.push(i);
+    }
+    if (freeIndexes.length > 0) {
+        let randomIndex = Math.floor(Math.random() * (freeIndexes.length) );
+        setTimeout(()=>{gameBoxes[ freeIndexes[randomIndex] ].click()},250);
+        return;
+    }
+
+    return;
+}
+
+export { getFillData, setFillData, reqBoxClass, updateShadowColor, finishGame, RandomMove }

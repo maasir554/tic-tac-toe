@@ -7,6 +7,7 @@
     font-family: 'Fira Sans Condensed', sans-serif;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
 }
 
 body, html {
@@ -75,6 +76,7 @@ main{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 #reset-box{
@@ -83,7 +85,7 @@ main{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 20px;
     padding-top: 25px;
 }
@@ -175,7 +177,7 @@ main{
     color: rgb(239, 106, 106);
 }
 
-#reset-game{
+.nice-btn{
     padding: 5px 10px;
     border-radius: 10px;
     background-color: rgb(234, 234, 234);
@@ -188,11 +190,11 @@ main{
     transition: border 0.05s;
 }
 
-#reset-game:hover{
+.nice-btn:hover{
     color:gray
 }
 
-#reset-game:active{
+.nice-btn:active{
     border: none;
     transition: border 0.05s;
 }
@@ -304,4 +306,16 @@ main{
     100%{
         color: var(--winner-color);
     }
+}
+
+#AI_btn{
+    --fg-color: rgb(170, 170, 170);
+    --border-color: rgb(170, 170, 170);
+    --hover-color: gray;
+    color: var(--fg-color);
+    border-color: var(--border-color);
+}
+
+#AI_btn:hover{
+    color: var(--hover-color);
 }
