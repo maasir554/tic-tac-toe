@@ -147,6 +147,10 @@ const indicatorMover = (indicatorBox, getTurnOf, root) => {
 
 const ToggleAI = (evt, getPlayingWithAI, setPlayingWithAI, getTurnOf, gameBoxes) => {
     let AI_btn = evt.target;
+    
+    // setting the player which will be ai:
+    
+    setIsAI( getTurnOf() ) 
 
     if(getPlayingWithAI()) {
         setPlayingWithAI(false);
@@ -174,8 +178,7 @@ const ToggleAI = (evt, getPlayingWithAI, setPlayingWithAI, getTurnOf, gameBoxes)
     
     // - - -
     
-    // setting the player which will be ai:
-    setIsAI( getTurnOf() ) 
+    
     
     // first step of AI after clicking: 
 
